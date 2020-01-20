@@ -11,10 +11,12 @@ import CategoryMealsScreen from "../src/screens/CategoryMealsScreen";
 import MealDetailScreen from "../src/screens/MealDetailScreen";
 import FavoritesScreen from "../src/screens/FavoritesScreen";
 import FiltersScreen from "../src/screens/FiltersScreen";
-import PostsScreen from '../src/screens/PostsScreen';
-import PostDetailsScreen from '../src/screens/PostDetailsScreen'
+import PostsScreen from "../src/screens/PostsScreen";
+import PostDetailsScreen from "../src/screens/PostDetailsScreen";
+import NotesScreen from "../src/screens/NotesScreen";
 import Colors from "../constants/Colors";
 
+//Default navigation options for Stack Navigator
 const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
@@ -29,24 +31,34 @@ const defaultStackNavOptions = {
   headerTitle: "Red App"
 };
 
+//Posts Navigator
 const PostsNavigator = createStackNavigator(
   {
     Posts: {
-      screen: PostsScreen, 
+      screen: PostsScreen,
       navigationOptions: {
         headerTitle: "Posts"
       }
     },
     PostDetails: {
-      screen: PostDetailsScreen,
-
+      screen: PostDetailsScreen
+    },
+    Notes: {
+      screen: NotesScreen,
+      navigationOptions: {
+        headerTitle: "Notes"
+      }
     }
-
-  }, {
+  },
+  {
     defaultNavigationOptions: defaultStackNavOptions
   }
-)
+);
 
+//NotesNavigator
+
+
+//Meals Navigator
 const MealsNavigator = createStackNavigator(
   {
     Categories: {
@@ -65,6 +77,7 @@ const MealsNavigator = createStackNavigator(
   }
 );
 
+//Favorites Navigator
 const FavNavigator = createStackNavigator(
   {
     Favorites: FavoritesScreen,
@@ -75,6 +88,7 @@ const FavNavigator = createStackNavigator(
   }
 );
 
+//Tab Navigator
 const tabScreenConfig = {
   Meals: {
     screen: MealsNavigator,
@@ -98,15 +112,17 @@ const tabScreenConfig = {
     screen: PostsNavigator,
     navigationOptions: {
       tabBarIcon: tabInfo => {
-        return <Ionicons name="ios-paper" size={25} color={tabInfo.tintColor}/>
+        return (
+          <Ionicons name="ios-paper" size={25} color={tabInfo.tintColor} />
+        );
       },
       tabBarColor: Colors.postsColor,
-      tabBarLabel: 
-      Platform.OS === "android" ? (
-        <Text style={{ fontFamily: "open-sans-bold" }}>Posts</Text>
-      ) : (
-        "Posts"
-      )
+      tabBarLabel:
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: "open-sans-bold" }}>Posts</Text>
+        ) : (
+          "Posts"
+        )
     }
   },
 
@@ -118,14 +134,13 @@ const tabScreenConfig = {
       },
       tabBarColor: Colors.accentColor,
       tabBarLabel:
-      Platform.OS === "android" ? (
-        <Text style={{ fontFamily: "open-sans-bold" }}>Favorites</Text>
-      ) : (
-        "Favorites"
-      )
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: "open-sans-bold" }}>Favorites</Text>
+        ) : (
+          "Favorites"
+        )
     }
-  },
-
+  }
 };
 
 const FiltersNavigator = createStackNavigator(

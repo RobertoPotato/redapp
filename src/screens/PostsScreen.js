@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, Button, View } from "react-native";
 import { POSTS } from "../../data/dummy-data";
 import PostGridItem from "../components/PostGridItem";
 
@@ -22,15 +22,29 @@ const PostsScreen = props => {
     );
   };
   return (
-    <FlatList
-      keyExtractor={(item, index) => item.id}
-      data={POSTS}
-      renderItem={renderGridItem}
-      numColumns={2}
-    />
+    <View style={styles.button}>
+      <FlatList
+        keyExtractor={(item, index) => item.id}
+        data={POSTS}
+        renderItem={renderGridItem}
+        numColumns={2}
+      />
+      <Button
+        title="Notes"
+        onPress={() => {
+          props.navigation.navigate({
+            routeName: "Notes"
+          });
+        }}
+      />
+    </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    paddingBottom: 40
+  }
+});
 
 export default PostsScreen;
