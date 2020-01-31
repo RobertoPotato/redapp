@@ -30,10 +30,10 @@ const PostsScreen = props => {
         numColumns={2}
       />
       <Button
-        title="Notes"
+        title="Products"
         onPress={() => {
           props.navigation.navigate({
-            routeName: "Notes"
+            routeName: "Products"
           });
         }}
       />

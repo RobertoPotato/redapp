@@ -14,6 +14,7 @@ import FiltersScreen from "../src/screens/FiltersScreen";
 import PostsScreen from "../src/screens/PostsScreen";
 import PostDetailsScreen from "../src/screens/PostDetailsScreen";
 import NotesScreen from "../src/screens/NotesScreen";
+import ProductsScreen from "../src/screens/ProductsScreen"
 import Colors from "../constants/Colors";
 
 //Default navigation options for Stack Navigator
@@ -47,6 +48,12 @@ const PostsNavigator = createStackNavigator(
       screen: NotesScreen,
       navigationOptions: {
         headerTitle: "Notes"
+      }
+    },
+    Products: {
+      screen: ProductsScreen, 
+      navigationOptions: {
+        headerTitle: "Products"
       }
     }
   },
