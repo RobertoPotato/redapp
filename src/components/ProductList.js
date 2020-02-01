@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Button, StyleSheet, FlatList, ScrollView } from "react-native";
 import fetchApi from "../../data/api/ProductsApiCalls";
 import ProductGridItem from "./ProductGridItem";
 
@@ -42,16 +42,27 @@ export default class ProductList extends Component {
     };
 
     //main return function here
+    //NOTE its not advisable to have a flatlist in a scrollview. Find a better alternative
     return (
-      <View style={styles.list}>
-        <FlatList
-          data={this.state.products}
-          keyExtractor={(item, index) => item.id}
-          renderItem={renderProductItem}
-          style={{ width: "100%" }}
-          numColumns={2}
-        />
-      </View>
+      <ScrollView>
+        <View style={styles.list}>
+          <FlatList
+            /*NOTE Using Pagination in laravel. Check out the link
+             * http://192.168.100.3:8000/api/products
+             * format styling since half the results are rendered offscreen
+             */
+            data={this.state.products.data}
+            keyExtractor={(item, index) => `id:${item.id}`}
+            renderItem={renderProductItem}
+            style={{ width: "100%", height: "100%" }}
+          />
+        </View>
+
+        <View>
+          <Button title="next" />
+          <Button title="Previous" />
+        </View>
+      </ScrollView>
     );
   }
 }
