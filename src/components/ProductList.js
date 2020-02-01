@@ -12,10 +12,7 @@ export default class ProductList extends Component {
   }
 
   render() {
-    const renderProductItem = (products) => {
-      
-      //LOG FUNCTION
-      console.log(products.item.title)
+    const renderProductItem = products => {
       return (
         <View>
           <ProductGridItem
@@ -23,21 +20,26 @@ export default class ProductList extends Component {
             image={products.item.imageUrl}
             price={products.item.price}
             isNegotiable={products.item.isNegotiable}
-            //affordability={itemData.item.affordability.toUpperCase()}
-            onSelectProduct={() => {
-              props.navigation.navigate({
-                routeName: "MealDetail",
-                params: {
-                  productId: products.item.id,
-                  productTitle: products.item.title
-                  //isFav: isFavorite
-                }
-              });
-            }}
+            /* NOTE  itemdata is not a recognized object
+            affordability={itemData.item.affordability.toUpperCase()}
+            */
+
+            //TODO ADD A METHOD TO NAVIGATE TO THE PRODUCT DETAILS PAGE WHEN A PRODUCT IS CLICKED
+            //onSelectProduct={() => {
+            //props.navigation.navigate({
+            //    routeName: "MealDetail",
+            //    params: {
+            //      productId: products.item.id,
+            //      productTitle: products.item.title
+            //      //isFav: isFavorite
+            //    }
+            //  });
+            //}
+            //}
           />
         </View>
-      );  
-    }
+      );
+    };
 
     //main return function here
     return (

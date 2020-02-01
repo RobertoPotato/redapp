@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import MealsNavigator from "./navigation/MealsNavigator";
+import MainNavigator from "./navigation/Navigator";
 import { enableScreens } from "react-native-screens";
 import { createStore, combineReducers } from "redux";
-import  mealsReducer from "./store/reducers/meals";
+import mealsReducer from "./store/reducers/meals";
 import { Provider } from "react-redux";
 
 enableScreens();
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MealsNavigator />
+      <MainNavigator />
     </Provider>
   );
 }

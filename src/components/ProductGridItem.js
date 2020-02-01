@@ -18,7 +18,7 @@ const ProductGridItem = props => {
   }
   return (
     <View style={styles.productItem}>
-      <TouchableComp onPress={props.onSelectProduct}>
+      <TouchableComp /* TODO onPress={props.onSelectProduct}*/ >
         <View>
           <View style={{ ...styles.productRow, ...styles.productHeader }}>
             <ImageBackground
